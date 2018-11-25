@@ -15,6 +15,7 @@ private:
 
 public:
     explicit Aluno();
+    Aluno(QString n, float m);
 
     QString getNome() const;
     void setNome(const QString &value);

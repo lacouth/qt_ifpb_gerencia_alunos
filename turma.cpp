@@ -43,6 +43,11 @@ int Turma::size()
     return turma.size();
 }
 
+void Turma::clear()
+{
+    turma.clear();
+}
+
 Aluno Turma::operator[](int i)
 {
     return turma[i];

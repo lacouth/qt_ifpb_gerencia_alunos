@@ -6,6 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->actionSalvar,SIGNAL(triggered()), this, SLOT(salvar()));
+    connect(ui->actionCarregar,SIGNAL(triggered()), this, SLOT(carregar()));
+
 }
 
 MainWindow::~MainWindow()
@@ -31,6 +35,40 @@ void MainWindow::inserirAlunoNaTabela(Aluno aluno, int row)
     ui->tbl_data->setItem(row,2,new QTableWidgetItem(aluno.getStatus()));
 }
 
+void MainWindow::salvar()
+{
+
+    QString nomeArquivo = QFileDialog::getSaveFileName(this,"Lista de Alunos","","Texto Puro(*.txt);;Arquivos Separado por Vírgulas(*.csv)");
+    if( GerenciadorDeArquivos::salvarTurma(nomeArquivo,engenharia) ){
+        QMessageBox::information(this, "Salvar turma","Dados Salvos com Sucesso");
+    }else{
+        QMessageBox::information(this, "Salvar turma","Não foi possível salvar os dados");
+    }
+
+}
+
+void MainWindow::carregar()
+{
+    QString nomeArquivo = QFileDialog::getOpenFileName(this,"Lista de Alunos","","Texto Puro(*.txt);;Arquivos Separado por Vírgulas(*.csv)");
+    engenharia.clear();
+
+    if(GerenciadorDeArquivos::carregarTurma(nomeArquivo,engenharia)){
+
+        ui->tbl_data->clearContents();
+        for(int i=0;i<engenharia.size();i++){
+
+            if(i >= ui->tbl_data->rowCount())
+                ui->tbl_data->insertRow(i);
+
+            inserirAlunoNaTabela(engenharia[i],i);
+        }
+
+    }else{
+        QMessageBox::information(this, "Carregar turma","Não foi possível carregar os dados");
+    }
+
+}
+
 void MainWindow::on_btn_insert_clicked()
 {
 
@@ -40,8 +78,8 @@ void MainWindow::on_btn_insert_clicked()
         aluno.setMedia(ui->le_avgInput->text().toFloat());
 
         int qnt_row = ui->tbl_data->rowCount();
-        ui->tbl_data->insertRow(qnt_row);
 
+        ui->tbl_data->insertRow(qnt_row);
         inserirAlunoNaTabela(aluno, qnt_row);
 
         ui->le_nameInput->clear();

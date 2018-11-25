@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <QVector>
+#include <QFileDialog>
+#include <QMessageBox>
+
+#include "gerenciadordearquivos.h"
 #include "aluno.h"
 #include "turma.h"
 
@@ -30,9 +34,14 @@ private slots:
 
     void on_btn_GradeSort_clicked();
 
+    void salvar();
+    void carregar();
+
 private:
     Ui::MainWindow *ui;
     void inserirAlunoNaTabela(Aluno aluno, int row);
+
+
 };
 
 #endif // MAINWINDOW_H
