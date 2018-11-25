@@ -24,6 +24,7 @@ public:
     void ordenarPorMedia();
 
     int size();
+    void clear();
 
     Aluno operator[](int i);
 

@@ -29,3 +29,10 @@ Aluno::Aluno()
 {
 
 }
+
+Aluno::Aluno(QString n, float m)
+{
+    nome = n;
+    media = m;
+
+}

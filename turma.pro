@@ -28,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     aluno.cpp \
-    turma.cpp
+    turma.cpp \
+    gerenciadordearquivos.cpp
 
 HEADERS += \
         mainwindow.h \
     aluno.h \
-    turma.h
+    turma.h \
+    gerenciadordearquivos.h
 
 FORMS += \
         mainwindow.ui
