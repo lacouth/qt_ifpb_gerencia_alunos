@@ -16,7 +16,6 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 private:
     Turma engenharia;
-    Aluno *aluno;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -27,8 +26,13 @@ public:
 private slots:
     void on_btn_insert_clicked();
 
+    void on_btn_NameSort_clicked();
+
+    void on_btn_GradeSort_clicked();
+
 private:
     Ui::MainWindow *ui;
+    void inserirAlunoNaTabela(Aluno aluno, int row);
 };
 
 #endif // MAINWINDOW_H

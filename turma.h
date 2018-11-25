@@ -13,12 +13,20 @@ class Turma : public QObject
     Q_OBJECT
 private:
     QVector<Aluno> turma;
+
 public:
     explicit Turma(QObject *parent = nullptr);
     void inserirAluno(const Aluno a);
     float mediaDaTurma();
     float maiorNota();
     float menorNota();
+    void ordenarPorNome();
+    void ordenarPorMedia();
+
+    int size();
+
+    Aluno operator[](int i);
+
 
 signals:
 
