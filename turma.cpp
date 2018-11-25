@@ -26,3 +26,24 @@ float Turma::menorNota()
     Aluno *menor = std::min_element(turma.begin(),turma.end(),[](Aluno a, Aluno b){return a.getMedia() < b.getMedia();});
     return menor->getMedia();
 }
+
+void Turma::ordenarPorNome()
+{
+    std::sort(turma.begin(), turma.end(), [](Aluno a, Aluno b){return a.getNome()<b.getNome();});
+}
+
+void Turma::ordenarPorMedia()
+{
+    ordenarPorNome();
+    std::stable_sort(turma.begin(),turma.end(),[](Aluno a, Aluno b){return a.getMedia()<b.getMedia();});
+}
+
+int Turma::size()
+{
+    return turma.size();
+}
+
+Aluno Turma::operator[](int i)
+{
+    return turma[i];
+}

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>402</width>
-    <height>460</height>
+    <width>472</width>
+    <height>471</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,14 +19,14 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>381</width>
-      <height>391</height>
+      <width>451</width>
+      <height>411</height>
      </rect>
     </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="Inserir" native="true">
+    <widget class="QWidget" name="Inserir">
      <attribute name="title">
       <string extracomment="Inserir">Inserir</string>
      </attribute>
@@ -100,13 +100,31 @@
         </column>
        </widget>
       </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QPushButton" name="btn_NameSort">
+          <property name="text">
+           <string>Ordenar por Nome</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_GradeSort">
+          <property name="text">
+           <string>Ordenar por Média</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
      </layout>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Estatísticas</string>
      </attribute>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -210,7 +228,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>402</width>
+     <width>472</width>
      <height>22</height>
     </rect>
    </property>

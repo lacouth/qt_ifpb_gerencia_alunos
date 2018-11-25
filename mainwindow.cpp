@@ -24,29 +24,49 @@ void MainWindow::atualizarEstatisticas()
 
 }
 
+void MainWindow::inserirAlunoNaTabela(Aluno aluno, int row)
+{
+    ui->tbl_data->setItem(row,0,new QTableWidgetItem(aluno.getNome()));
+    ui->tbl_data->setItem(row,1,new QTableWidgetItem(QString::number(aluno.getMedia())));
+    ui->tbl_data->setItem(row,2,new QTableWidgetItem(aluno.getStatus()));
+}
+
 void MainWindow::on_btn_insert_clicked()
 {
 
-    int qnt_row = ui->tbl_data->rowCount();
-
     if(ui->le_nameInput->text().size() != 0 && ui->le_avgInput->text().size() != 0){
-        aluno = new Aluno();
+        Aluno aluno;
+        aluno.setNome(ui->le_nameInput->text());
+        aluno.setMedia(ui->le_avgInput->text().toFloat());
 
-        aluno->setNome(ui->le_nameInput->text());
-        aluno->setMedia(ui->le_avgInput->text().toFloat());
-
+        int qnt_row = ui->tbl_data->rowCount();
         ui->tbl_data->insertRow(qnt_row);
 
-        ui->tbl_data->setItem(qnt_row,0,new QTableWidgetItem(aluno->getNome()));
-        ui->tbl_data->setItem(qnt_row,1,new QTableWidgetItem(QString::number(aluno->getMedia())));
-        ui->tbl_data->setItem(qnt_row,2,new QTableWidgetItem(aluno->getStatus()));
+        inserirAlunoNaTabela(aluno, qnt_row);
 
         ui->le_nameInput->clear();
         ui->le_avgInput->clear();
 
-        engenharia.inserirAluno(*aluno);
+        engenharia.inserirAluno(aluno);
         atualizarEstatisticas();
+    }
+}
 
-        delete aluno;
+void MainWindow::on_btn_NameSort_clicked()
+{
+    ui->tbl_data->clearContents();
+
+    engenharia.ordenarPorNome();
+    for(int i = 0; i<engenharia.size(); i++){
+        inserirAlunoNaTabela(engenharia[i], i);
+    }
+}
+
+void MainWindow::on_btn_GradeSort_clicked()
+{
+    ui->tbl_data->clearContents();
+    engenharia.ordenarPorMedia();
+    for(int i = 0; i<engenharia.size();i++){
+        inserirAlunoNaTabela(engenharia[i],i);
     }
 }

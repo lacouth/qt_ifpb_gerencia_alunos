@@ -24,6 +24,7 @@ public:
 
     QString getStatus() const;
 
+
 signals:
 
 public slots:
