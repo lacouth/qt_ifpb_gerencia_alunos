@@ -39,6 +39,9 @@ Os *Line edits* são os campos editáveis de um formulário e funcionam como uma
 
 ![](figuras/ex_text_edit.png)
 
+### Line Edits no QT Creator 
+
+
 Os *Line edits* ficam dentro dos *Input Widgets* no QT Creator e da mesma forma que os labels basta clicar e arrastar para a posição que você desejar dentro do seu *form*. Como qualquer outro *widget* é sempre importante mudar o *objectName* para um nome que você possa facilmente referenciar dentro do seu código.
 
 ![](figuras/line_edit_qt.png)
