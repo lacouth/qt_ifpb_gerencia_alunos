@@ -1,5 +1,5 @@
 # Gerenciador de alunos 2018.2 
-### Código exemplo da aplicação desenvolvida em [QT](www.qt.io) para gerenciar as notas de uma turma
+### Código exemplo da aplicação desenvolvida em [QT](http://www.qt.io) para gerenciar as notas de uma turma
 
 A aplicação deve permitir que o usuário insira vários alunos mostrando os alunos em uma tabela com a possibilidade de ordenação por nomes e nota. A Figura abaixo mostra a tela inicial da aplicação.
 
@@ -9,7 +9,7 @@ O gerenciador de alunos também conta com uma aba para mostrar as estatísticas 
 
 ![](figuras/tela_estatistica.png)
 
-# Os principais componentes (widgets)
+# Os componentes básicos do QT (basic widgets)
 
 ## Labels
 
@@ -61,8 +61,25 @@ Os *line edits* podem ser utilizados para obter os mais variados tipos de inform
 
 ## Push Buttons
 
+Os *Push Buttons* são os botões mais simples no QT Creator, são muito utilizados quando o usuário quer iniciar ou completar alguma ação na interface.
 
+![](figuras/button_qt.png)
 
+Da mesma forma que nos outros *widgets* os *push buttons* quando criados dentro do QT Creator também possuem um *objectName* que você pode e deve modificar para expressar qual é o inteção do botão na tela.
+
+Uma das características importantes dos botões é que eles emitem _sinais_ para o QT quando são manipulados, então devemos associar esses sinais a métodos especiais que são chamados de _slots_ dentro do QT, basicamente isso significa que quando um _sinal_ é emitido para que algo aconteça é necessário ter um _slot_ associado. Por ser um ação muito comum para botões o QT Creator facilita a criação de _slots_ para os *push buttons*. Para associar as ações (_signal_) do seu botão a um método (_slot_) específico, basta clicar com o botão direito do mouse no seu *push button* e selecionar a opção *Go to slot...* no menu.
+
+![](figuras/go_to_slot.png)
+
+Quando você selecionar essa opção deve aparecer um menu como o da imagem abaixo com os _signals_ que o seu botão pode emitir, o mais útil para nós por enquanto é o *clicked()*.
+
+![](figuras/go_to_slot_clicked.png)
+
+Ao escolher a opção *clicked( )* o QT Creator irá automaticamente criar um método na sua *mainWindow* para ser responsável pelo clique no seu botão.
+
+![](figuras/go_to_slot_code.png)
+
+O nome do método gerado segue uma lógica bem simples, digamos que você tenha alterado o *objectName* do seu botão para *btn_inserir* então o QT Creator irá criar um método *void on_btn_inserir_clicked()* para associar ao *signal clicked* do seu botão. No método criado você pode fazer a ação que desejar, copiar um valor de um *line edit* para uma *label*, abrir uma janela nova, salvar um arquivo e etc.
 
 
 
